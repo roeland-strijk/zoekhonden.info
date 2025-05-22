@@ -45,16 +45,27 @@
 }
 
 .dark-background {
-  --background-color: #060606;
+  --background-color: #158f57; /* was #060606; */
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #252525;
+  --surface-color: #158f57;  /* was #252525; */
   --contrast-color: #ffffff;
 }
 
 /* Smooth scroll */
 :root {
   scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+Eigen CSS 
+---------------------------------------------------------------*/
+table, th, td {
+ 
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
 }
 
 /*--------------------------------------------------------------

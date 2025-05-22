@@ -59,6 +59,12 @@
         <a href="https://www.facebook.com/roeland.strijk.3/" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="https://www.linkedin.com/in/roeland-strijk-60bb3847/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <br>
+      {% if user.is_authenticated %}
+        Ingelogd als {{ user.username }} | <a href="{% url 'logout' %}">Logout</a>
+    {% else %} 
+        Niet ingelogd | <a href="{% url 'login' %}">Login</a>
+    {% endif %}
       </div>
 
     </div>
@@ -87,7 +93,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <div class="section-title-container d-flex align-items-center justify-content-between">
-          <h2>Alle Incidenten Logs</h2>
+          <h4>Alle Incidenten Logs</h4>
         </div>
       </div>s
       <!-- End Section Title -->

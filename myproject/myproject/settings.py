@@ -30,6 +30,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+LOGIN_URL = '/login/'  # Of waar je login view staat
+LOGIN_REDIRECT_URL = 'logs'   # Naar waar je na login wilt
+LOGOUT_REDIRECT_URL = '/' # Optioneel als je LogoutView gebruikt
+
 # Application definition
 
 INSTALLED_APPS = [

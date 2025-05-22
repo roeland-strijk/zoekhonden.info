@@ -1,12 +1,11 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Zoekhonden.info</title>
+  <title>Index - Roeland Strijk</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -26,27 +25,17 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
-<script>
-    function updateTime() {
-        const now = new Date();
-        const timeField = document.getElementById("id_tijd");
-        if (timeField) {
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            timeField.value = `${hours}:${minutes}`;  // Zonder seconden!
-        }
-    }
 
-    window.onload = function () {
-        updateTime();               // Meteen invullen
-        setInterval(updateTime, 1000); // Optioneel bijwerken
-    };
-
-      function confirmDelete() {
-    return confirm("Weet je zeker dat je dit item wilt verwijderen?");
-  }
-</script>
+  <!-- =======================================================
+  * Template Name: ZenBlog
+  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+  * Updated: Aug 08 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
+
+
 <body class="index-page">
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
@@ -59,7 +48,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-       <!--menu hier -->
+     <!--menu hier --> 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -69,13 +58,13 @@
         <a href="https://www.facebook.com/roeland.strijk.3/" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="https://www.linkedin.com/in/roeland-strijk-60bb3847/" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        <br>
+      <br>
       {% if user.is_authenticated %}
         Ingelogd als {{ user.username }} | <a href="{% url 'logout' %}">Logout</a>
     {% else %} 
         Niet ingelogd | <a href="{% url 'login' %}">Login</a>
     {% endif %}
-      </div>
+    </div>
 
     </div>
   </header>
@@ -88,11 +77,10 @@
     
         <nav class="breadcrumbs">
           <ol>
-            
-             <li><a href="/">Home</a></li>
-          
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'logs' %}">Logs</a></li>
             <li><a href="{% url 'incidenten' %}">Incidenten</a></li>
-            
+
           </ol>
         </nav>
       </div>
@@ -104,54 +92,14 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <div class="section-title-container d-flex align-items-center justify-content-between">
-          <h4>Logs</h4>
-          
+          <h2>Radio Log</h2>
         </div>
-      </div><!-- End Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-<!-- hier komt de form -->
-  <form method="post">
-  {% csrf_token %}
-   {{ form.as_table }}
+      </div>
+      <!-- End Section Title -->
+<!-- conten hier -->
+      </div>
 
-  <button type="submit" class="btn btn-primary">Opslaan</button>
-</form>
- <div class="table-responsive-md">
-
-  <!-- hier komt de uitkomst-->
-    <h3>Log voor incident #{{ laatste.incident_nr }} {{ laatste.incident_naam }}</h3>
-    <table border="1" class="table table-striped table-bordered">
-
-        <tr>
-            <th>Datum</th>
-            <th>Tijd</th>
-            <th>Team</th>
-            <th>Bericht</th>
-            <th>✏️</th>
-            <th>❌</th>
-
-        </tr>
-        {% for log in form133next%}
-        <tr>
-            <td>{{ log.datum|date:"d-m-Y"}}</td>
-            <td>{{ log.tijd|date:"H:i:s"}}</td>
-            <td>{{ log.team }}</td>
-            <td>{{ log.bericht }}</td>
-            <td><a href="{% url 'edit_form133next' log.pk %}">✏️ Bewerken</a></td>
-            <td><form action="{% url 'delete_form133next' log.pk %}" method="post" style="display:inline;" onsubmit="return confirmDelete();">
-      {% csrf_token %}
-      <button type="submit" style="background:none; border:none; color:red; cursor:pointer;">🗑️</button>
-    </form></td>
-      
-        </tr>
-        {% empty %}
-        <tr><td colspan="4">Geen logs gevonden.</td></tr>
-        {% endfor %}
-        
-    </table>
-  </div>
-</div>
-   </section><!-- /Starter Se ction Section -->
+    </section><!-- /Starter Section Section -->
 
   </main>
 
@@ -176,12 +124,11 @@
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <!--<h4>Links</h4>-->
+         <!-- <h4>Links</h4> -->
           <ul>
         <!--menu hier-->
           </ul>
         </div>
-
       </div>
     </div>
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,25 +98,24 @@
       </div>
       <!-- End Section Title -->
       <div class="container section-title" data-aos="fade-up">
-      {% block content %}
-<form method="post">
+  
+{% block content %}
+<form method="post" class="p-4 rounded shadow-sm bg-white" style="max-width: 400px; margin: auto;">
   {% csrf_token %}
   {{ form.non_field_errors }}
-  <table>
-    <tr>
-      <td>{{ form.username.label_tag }}</td>
-      <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-      <td>{{ form.password.label_tag }}</td>
-      <td>{{ form.password }}</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><button type="submit" class="btn btn-primary">Log in</button></td>
-    </table>
+  <div class="mb-3">
+    {{ form.username.label_tag }}
+    {{ form.username|add_class:"form-control" }}
+  </div>
+  <div class="mb-3">
+    {{ form.password.label_tag }}
+    {{ form.password|add_class:"form-control" }}
+  </div>
+  <button type="submit" class="btn btn-primary w-100">Log in</button>
 </form>
 {% endblock %}
+
+
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -158,10 +158,10 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        <a href="https://bootstrapmade.com/" target="_blank">BootstrapMade</a>
+        <!--<a href="https://bootstrapmade.com/" target="_blank">BootstrapMade</a>-->
       </div>
     </div>
-
+  
   </footer>
 
   <!-- Scroll Top -->

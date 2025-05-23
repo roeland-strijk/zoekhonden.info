@@ -95,8 +95,8 @@
     {% csrf_token %}
     {{ form.as_p }}
     <br>
-    <button type="submit" class="btn btn-primary">Bewerking Opslaan</button>
-    <input type="button" class="btn btn-primary" onclick="location.href='{% url 'logs' %}';" value="Bewerking Annuleren" />
+    <button type="submit" class="btn btn-outline-success">Bewerking Opslaan</button>
+    <input type="button" class="btn btn-outline-success" onclick="location.href='{% url 'logs' %}';" value="Bewerking Annuleren" />
   </form>
 {% endblock %}
     

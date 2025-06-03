@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sarforms',
     'widget_tweaks',
+    'maps',
 ]
 
 MIDDLEWARE = [

@@ -2,7 +2,7 @@ from django.db.models import Max
 from .models import Form133, Form133Next
 from .forms import Form133Form, Form133NextForm
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Incident
+#from .models import Incident
 from django.contrib.auth.decorators import login_required
 
 # radio register view 
@@ -24,6 +24,8 @@ def radio_log(request):
         'form': form,
         'laatste': laatste,
         'volgend_incident_nr': volgend_incident_nr,
+
+        
     }
     return render(request, 'radio_register.html', context) #render the form
 
@@ -35,21 +37,30 @@ def radio_log_combined(request):
         if form.is_valid():
             form.save()
 
-    max_incident_nr = Form133.objects.aggregate(Max('incident_nr'))['incident_nr__max']
-    logs = Form133Next.objects.filter(incident_nr=max_incident_nr).order_by('-datum', '-tijd')
-
-    incidenten = Form133.objects.all()
     laatste = Form133.objects.last()
-    form = Form133NextForm(initial={'incident_nr': max_incident_nr})
+    incidenten = Form133.objects.all()
+
+    if laatste:
+        form = Form133NextForm(initial={
+            'incident_nr': laatste.incident_nr,
+            'incident_naam': laatste.incident_naam,
+            'locatie': laatste.locatie,
+        })
+        logs = Form133Next.objects.filter(incident_nr=laatste.incident_nr).order_by('-datum', '-tijd')
+    else:
+        form = Form133NextForm()
+        logs = Form133Next.objects.none()
 
     context = {
         'form': form,
-        'form133next': logs,
-        'form133': incidenten,
+        'logs': logs,
+        'incidenten': incidenten,
         'laatste': laatste,
     }
 
     return render(request, 'radio_log_combined.html', context)
+
+
 
 # update view
 @login_required

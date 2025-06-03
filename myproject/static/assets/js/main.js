@@ -45,6 +45,7 @@
     });
 
   });
+ 
 
   /**
    * Toggle mobile nav dropdowns
@@ -122,3 +123,4 @@
   window.addEventListener("load", initSwiper);
 
 })();
+ new PureCounter();

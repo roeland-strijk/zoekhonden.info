@@ -715,7 +715,7 @@ section,
 
 .section-title .section-title-container {
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--default-color);
+  border-bottom: 1px solid var(--default-color);
 }
 
 .section-title h2 {

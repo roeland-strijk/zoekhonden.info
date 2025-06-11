@@ -6,10 +6,12 @@ from django.utils import timezone
 class Form133Form(forms.ModelForm):
     class Meta:
         model = Form133
-        fields = ['incident_nr', 'incident_naam', 'datum', 'locatie']
+        fields = ['incident_nr', 'incident_naam', 'datum', 'locatie', 'latitude', 'longitude']
         widgets = {
             'datum': forms.DateInput(attrs={'type': 'date'}),
             'incident_nr': forms.HiddenInput(),
+            'latitude': forms.HiddenInput(),
+            'longitude': forms.HiddenInput(),
         }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

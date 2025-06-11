@@ -56,6 +56,8 @@ def radio_log_combined(request):
         'logs': logs,
         'incidenten': incidenten,
         'laatste': laatste,
+       'incident_nr': laatste.incident_nr,
+       'incident_naam': laatste.incident_naam,
     }
 
     return render(request, 'radio_log_combined.html', context)
